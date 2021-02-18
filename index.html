@@ -6,29 +6,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dev.finance$</title>
+
+    <!-- Importanções de fontes e arquivos -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- Fonte do google Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
+    <!-- Header, onde tem a logo-->
     <header>
         <img src="assets/logo.svg" alt="Logo Dev Finance">
     </header>
 
+    <!-- Cards e as transações -->
     <main class="container">
 
         <section id="balance">
             <h2 class="sr-only">Balanço</h2>
 
+            <!-- Cards, com os valores de Entradas, Saídas e o calculo TOTAL -->
             <div class="card">
                 <h3>
                     <span>Entradas</span>
                     <img src="assets/income.svg" alt="Image de entradas">
                 </h3>
-                <p>R$ 5.000,00</p>
+                <p id="incomeDisplay">R$ 0,00</p>
             </div>
 
             <div class="card">
@@ -36,7 +42,7 @@
                     <span>Saídas</span>
                     <img src="assets/expense.svg" alt="Image de saída">
                 </h3>
-                <p>R$ 2.000,00</p>
+                <p id="expenseDisplay">R$ 0,00</p>
             </div>
 
             <div class="card total">
@@ -44,18 +50,17 @@
                     <span>Total</span>
                     <img src="assets/total.svg" alt="Image de total">
                 </h3>
-                <p>R$ 3.000,00</p>
+                <p id="totalDisplay">R$ 0,00</p>
             </div>
 
         </section>
 
+        <!-- Tabela com o extrato de entradas e saidas -->
         <section id="transaction">
             <h2 class="sr-only">Transações</h2>
 
-            <a href="#"
-            onclick="Modal.open()" 
-            class="button new">+ Nova Transação</a>
-            
+            <a href="#" onclick="Modal.open()" class="button new">+ Nova Transação</a>
+
             <table id="data-table">
                 <thead>
                     <tr>
@@ -66,81 +71,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="description">Luz</td>
-                        <td class="expense">- R$ 500,00</td>
-                        <td class="date">14/01/2021</td>
-                        <td>
-                            <img src="assets/minus.svg" alt="Remover transação">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="description">Criação website</td>
-                        <td class="income">R$ 5.000,00</td>
-                        <td class="date">14/01/2021</td>
-                        <td>
-                            <img src="assets/minus.svg" alt="Remover transação">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="description">Aluguél</td>
-                        <td class="expense">- R$ 6500,00</td>
-                        <td class="date">14/01/2021</td>
-                        <td>
-                            <img src="assets/minus.svg" alt="Remover transação">
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </section>
     </main>
 
+    <!-- Modal para inserir novas transações, onde ao clicar em " + Nova Transação " abre uma nova div na tela -->
     <div class="modal-overlay ">
         <div class="modal">
             <div id="form">
                 <h2>Nova Transação</h2>
-                <form action="">
+                <form action="" onsubmit="Form.submit(event)">
                     <div class="input-group">
-                        <label 
-                            class="sr-only" 
-                            for="description">Descrição</label>
-                        <input 
-                            type="text" 
-                            id="description" 
-                            name="description"
-                            placeholder="Descrição"
-                        />
+                        <label class="sr-only" for="description">Descrição</label>
+                        <input type="text" id="description" name="description" placeholder="Descrição" />
                     </div>
 
                     <div class="input-group">
-                        <label 
-                            class="sr-only" 
-                            for="amount">Valor</label>
-                        <input 
-                            type="number" 
-                            step="0.01"
-                            id="amount" 
-                            name="amount"
-                            placeholder="0,00"
-                        />
-                        <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas decímais.</small>
+                        <label class="sr-only" for="amount">Valor</label>
+                        <input type="number" step="0.01" id="amount" name="amount" placeholder="0,00" />
+                        <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas
+                            decímais.</small>
                     </div>
 
                     <div class="input-group">
-                        <label 
-                            class="sr-only" 
-                            for="date">Data</label>
-                        <input 
-                            type="date" 
-                            id="date" 
-                            name="date"
-                        />
+                        <label class="sr-only" for="date">Data</label>
+                        <input type="date" id="date" name="date" />
                     </div>
 
                     <div class="input-group actions">
-                        <a href="#" 
-                        onclick="Modal.close()"  
-                        class="button cancel">Cancelar</a>
+                        <a href="#" onclick="Modal.close()" class="button cancel">Cancelar</a>
                         <button>Salvar</button>
                     </div>
                 </form>
@@ -148,33 +108,11 @@
         </div>
     </div>
 
+    <!-- Rodapé da página. -->
     <footer>dev.finance$</footer>
 
-
-
-    <script>
-
-        const Modal = {
-            open(){
-                // Abrir modal
-                // Adicionar a classe active ao modal
-                document
-                    .querySelector('.modal-overlay')
-                    .classList.add('active')
-
-            },
-            close () {
-                // Fechar modal
-                // Remover a classe active ao modal
-                document
-                    .querySelector('.modal-overlay')
-                    .classList.remove('active')
-
-            }
-            
-        }
-
-    </script>
+    <!-- Importanto arquivo JS -->
+    <script src="./script.js"></script>
 
 </body>
 

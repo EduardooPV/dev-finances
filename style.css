@@ -231,6 +231,8 @@ td.expense {
 
     opacity: 0;            /* Retirando o Modal da tela */
     visibility: hidden;
+
+    z-index: 999;
 }
 
 .modal-overlay.active {
@@ -244,6 +246,9 @@ td.expense {
     position: relative;
     width: 90%;
     max-width: 500px;
+
+    position: relative;
+    z-index: 1;
 }
 
 /*------------ FORM ------------*/
