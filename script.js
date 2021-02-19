@@ -16,6 +16,23 @@ const Modal = {
     }
 }
 
+const ModalConfirm = {
+    open() {
+        // Abrir modal
+        // Adicionar a classe active ao modal
+        document
+            .querySelector('.modal-overlay.confirm')
+            .classList.add('active')
+    },
+    close() {
+        // Fechar modal
+        // Remover a classe active ao modal
+        document
+            .querySelector('.modal-overlay.confirm')
+            .classList.remove('active')
+    }
+}
+
 const Storage = {
     get() {
         return JSON.parse(localStorage.getItem("dev.finances:transactions")) || []
@@ -92,9 +109,16 @@ const DOM = {
         <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
         <td>
-            <img onclick="Transaction.remove(${index})" src="assets/minus.svg" alt="Remover transação">
+            <img onclick="Transaction.remove(${index})" style="width: 1.5rem;" src="assets/minus1.svg" alt="Remover transação">
+
+            <a href="#" onclick="ModalConfirm.open()" class="button new"><img style="width: 1.5rem;" src="assets/minus1.svg" alt="Confirmar exclusão"></a>
         `
         return html
+    },
+
+    deleteconfirm() {
+        buttonconfirm = document.querySelector('#deleteconfirm')
+        
     },
 
     updateBalance() {
