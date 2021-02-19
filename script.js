@@ -109,8 +109,6 @@ const DOM = {
         <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
         <td>
-            <img onclick="Transaction.remove(${index})" style="width: 1.5rem;" src="assets/minus1.svg" alt="Remover transação">
-
             <a href="#" onclick="ModalConfirm.open()" class="button new"><img style="width: 1.5rem;" src="assets/minus1.svg" alt="Confirmar exclusão"></a>
         `
         return html
@@ -118,7 +116,7 @@ const DOM = {
 
     deleteconfirm() {
         buttonconfirm = document.querySelector('#deleteconfirm')
-        
+
     },
 
     updateBalance() {
