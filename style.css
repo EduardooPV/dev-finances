@@ -103,7 +103,7 @@ button:hover {
 /*------------ HEADER ------------*/
 header {
     background: #2D4A22;
-    padding: 2rem 0rem 10rem;
+    padding: 2rem 0rem 12rem;
     text-align: center;
 }
 
@@ -112,53 +112,9 @@ header {
     font-weight: 100;
 }
 
-/*------------ COLORS ------------*/
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: -4.5rem 2rem ;
-
-    position: absolute;
-    right: 0;
-
-    border: solid 3px white;
-    border-radius: 0.25rem;
-    width: 130px;
-    height: 40px;
-}
-
-.default {
-    background-color: var(--light-green);
-}
-
-.red {
-    background-color: red;
-}
-
-.blue {
-    background-color: blue;
-}
-
-.yellow {
-    background-color: yellow;
-}
-
-
-.card.redred {
-    background: red;
-    color: white;
-}
-
-.backgroundred {
-    background: rgb(141, 34, 34);
-    padding: 2rem 0rem 10rem;
-    text-align: center;
-}
-
-
 /*------------ BALANCE ------------*/
 #balance {
-    margin-top: -8rem;
+    margin-top: -6rem;
 }
 
 #balance h2 {

@@ -43,29 +43,6 @@ const Storage = {
     },
 }
 
-const Colors = {
-    default() {
-        document.querySelector('.card.redred').classList.replace('redred', 'total')
-        document.querySelector('.backgroundred').classList.replace('backgroundred','header')
-
-    },
-
-    red() {
-        document.querySelector('.card.total').classList.replace('total', 'redred')
-        document.querySelector('.header').classList.replace('header','backgroundred')
-    },
-
-    red() {
-        document.querySelector('.card.total').classList.replace('total', 'redred')
-        document.querySelector('.header').classList.replace('header','backgroundred')
-    },
-    
-    red() {
-        document.querySelector('.card.total').classList.replace('total', 'redred')
-        document.querySelector('.header').classList.replace('header','backgroundred')
-    },
-}
-
 const Transaction = {
     all: Storage.get(),
 
@@ -132,7 +109,7 @@ const DOM = {
         <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
         <td>
-            <a href="#" onclick="ModalConfirm.open()" class="button new"><img style="width: 1.5rem;" src="assets/minus1.svg" alt="Confirmar exclusão"></a>
+            <a href="#" onclick="ModalConfirm.open()" class="button new"><img style="width: 1.7rem; margin-top: 0.25rem;" src="assets/minus1.svg" alt="Confirmar exclusão"></a>
         `
         return html
     },
