@@ -12,14 +12,16 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <!-- Fonte do google Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
 
     <!-- Header, onde tem a logo-->
-    <header>
+    <header class="header">
         <img src="assets/logo.svg" alt="Logo Dev Finance">
     </header>
 
@@ -27,6 +29,14 @@
     <main class="container">
 
         <section id="balance">
+
+            <div class="grid">
+                <a class="default" onclick="Colors.default()" href="#"></a>
+                <a class="red" onclick="Colors.red()" href="#"></a>
+                <a class="blue" onclick="Colors.red()" href="#"></a>
+                <a class="yellow" onclick="Colors.red()" href="#"></a>
+            </div>
+
             <h2 class="sr-only">Balanço</h2>
 
             <!-- Cards, com os valores de Entradas, Saídas e o calculo TOTAL -->
@@ -112,18 +122,20 @@
 
     <div class="modal-overlay confirm">
         <div class="modal">
-            <div id="form">
-                <div class="input-group actions">
-                    <p>Deseja mesmo apagar essa transação!?</p> </br>
-                    <a href="#" onclick="ModalConfirm.close()" class="button cancel">Cancelar</a>
-                    <button onclick="Transaction.remove(), ModalConfirm.close()" >CONFIRMAR</button>
-                </div>
+            <div class="input-group actions exclude">
+                <p>Deseja mesmo apagar essa transação!?</p>
+                <a href="#" onclick="ModalConfirm.close()" class="button confirm">Cancelar</a>
+                <button onclick="Transaction.remove(), ModalConfirm.close()">CONFIRMAR</button>
             </div>
         </div>
     </div>
 
     <!-- Rodapé da página. -->
-    <footer>dev.finance$</footer>
+    <footer>
+        <a href="https://github.com/EduardooPV/maratona-rocketseat"><img id="githubIcon" src="./assets/github-icon.svg"
+                alt=""></a>
+        <p>dev.finance$</p>
+    </footer>
 
     <!-- Importanto arquivo JS -->
     <script src="./script.js"></script>
@@ -131,4 +143,3 @@
 </body>
 
 </html>
-

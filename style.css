@@ -112,6 +112,50 @@ header {
     font-weight: 100;
 }
 
+/*------------ COLORS ------------*/
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: -4.5rem 2rem ;
+
+    position: absolute;
+    right: 0;
+
+    border: solid 3px white;
+    border-radius: 0.25rem;
+    width: 130px;
+    height: 40px;
+}
+
+.default {
+    background-color: var(--light-green);
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+
+.card.redred {
+    background: red;
+    color: white;
+}
+
+.backgroundred {
+    background: rgb(141, 34, 34);
+    padding: 2rem 0rem 10rem;
+    text-align: center;
+}
+
+
 /*------------ BALANCE ------------*/
 #balance {
     margin-top: -8rem;
@@ -251,7 +295,34 @@ td.expense {
     z-index: 1;
 }
 
-/*------------ MODAL ------------*/
+/*------------ MODAL DELETE CONFIRM ------------*/
+
+.button.confirm {
+    color: var(--red);
+    border: 2px var(--red) solid;
+    border-radius: 00.25rem;
+
+    height: 50px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0.6;
+}
+
+.button.confirm:hover {
+    opacity: 1;
+}
+
+.exclude {
+    flex-wrap: wrap;
+}
+
+.exclude > p {
+    margin-bottom: 2rem;
+}
+
 
 /*------------ FORM ------------*/
 
@@ -294,10 +365,24 @@ input {
 
 /*------------ FOOTER ------------*/
 footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
     padding: 4rem 0 2rem;
     color: var(--dark-blue);
-    opacity: 0.6;
+    opacity: 0.8;
+}
+
+#githubIcon {
+    width: 2rem;
+    margin-right: 10px;
+}
+
+#githubIcon:hover {
+    transition: 0.2s;
+   opacity: 0.7;
 }
 
 /*------------ RESPONSIVE ------------*/@media (min-width: 800px) {

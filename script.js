@@ -43,6 +43,29 @@ const Storage = {
     },
 }
 
+const Colors = {
+    default() {
+        document.querySelector('.card.redred').classList.replace('redred', 'total')
+        document.querySelector('.backgroundred').classList.replace('backgroundred','header')
+
+    },
+
+    red() {
+        document.querySelector('.card.total').classList.replace('total', 'redred')
+        document.querySelector('.header').classList.replace('header','backgroundred')
+    },
+
+    red() {
+        document.querySelector('.card.total').classList.replace('total', 'redred')
+        document.querySelector('.header').classList.replace('header','backgroundred')
+    },
+    
+    red() {
+        document.querySelector('.card.total').classList.replace('total', 'redred')
+        document.querySelector('.header').classList.replace('header','backgroundred')
+    },
+}
+
 const Transaction = {
     all: Storage.get(),
 
