@@ -198,6 +198,7 @@ a:hover {
     color: var(--light-green);
 }
 
+
 button {
     width: 100%;
     height: 50px;
@@ -408,11 +409,15 @@ td.expense {
     z-index: 1;
 }
 
+.help {
+    color: var(--font-color-base);
+}
+
 /*------------ MODAL DELETE CONFIRM ------------*/
 
 .button.confirm {
-    color: var(--red);
-    border: 2px var(--red) solid;
+    color: red;
+    border: 2px red solid;
     border-radius: 00.25rem;
 
     height: 50px;
@@ -429,6 +434,7 @@ td.expense {
 }
 
 .exclude {
+    color:  var(--font-color-base);
     flex-wrap: wrap;
 }
 
