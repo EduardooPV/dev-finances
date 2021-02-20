@@ -147,7 +147,54 @@ const DOM = {
 
     clearTransactions() {
         DOM.transactionsContainer.innerHTML = ""
-    }
+    },
+
+    invertTheme(mediaText) {
+        return mediaText.indexOf('dark') > -1
+            ? ['dark', 'light']
+            : ['light', 'dark']
+    },
+
+    loadTheme(darkMode) {
+        const cssRules = window.document.styleSheets[0].cssRules
+
+        for (const rule of cssRules) {
+            let media = rule.media
+
+            if (media) {
+                const [currentTheme] = DOM.invertTheme(media.mediaText)
+                const nextTheme = darkMode ? 'light' : 'dark'
+
+                media.mediaText = media.mediaText.replace(
+                    '(prefers-color-scheme: ' + currentTheme + ')',
+                    '(prefers-color-scheme: ' + nextTheme + ')'
+                )
+            }
+        }
+    },
+
+    switchTheme() {
+        const cssRules = window.document.styleSheets[0].cssRules
+        let darkMode = []
+
+        for (const rule of cssRules) {
+            let media = rule.media
+
+            if (media) {
+                const [currentTheme, nextTheme] = DOM.invertTheme(
+                    media.mediaText
+                )
+                darkMode.push(currentTheme)
+
+                media.mediaText = media.mediaText.replace(
+                    '(prefers-color-scheme: ' + currentTheme + ')',
+                    '(prefers-color-scheme: ' + nextTheme + ')'
+                )
+            }
+        }
+    },
+
+
 }
 
 // Transformar os valores de entrada e saida em REAL ( - R$ 2000,00 )
@@ -155,7 +202,7 @@ const Utils = {
 
     formatAmount(value) {
         value = Number(value) * 100
-        
+
         return value
     },
 
@@ -197,25 +244,25 @@ const Form = {
 
 
     validateField() { // Validar se os campos estão preenchidos
-        const { description, amount, date} = Form.getValues()
-        
+        const { description, amount, date } = Form.getValues()
+
         if (
-            description.trim() === "" || 
-            amount.trim() === "" || 
+            description.trim() === "" ||
+            amount.trim() === "" ||
             date.trim() === "") {
-                throw new Error("Por favor, preencha todos os campos")  // Tratando os erros
+            throw new Error("Por favor, preencha todos os campos")  // Tratando os erros
         }
     },
 
     formatValues() {
-        let { description, amount, date} = Form.getValues()
+        let { description, amount, date } = Form.getValues()
 
         amount = Utils.formatAmount(amount)
 
         date = Utils.formatDate(date)
 
         return {
-            description, 
+            description,
             amount,
             date
         }
@@ -232,8 +279,8 @@ const Form = {
     },
 
     submit(event) {
-         // Interrompendo o comportamento padrão do Formulário ao clicar em "SALVAR"
-        event.preventDefault() 
+        // Interrompendo o comportamento padrão do Formulário ao clicar em "SALVAR"
+        event.preventDefault()
 
 
 
@@ -260,7 +307,7 @@ const App = {
         Transaction.all.forEach(function (transaction, index) {
             DOM.addTransaction(transaction, index)
         })
-        
+
         DOM.updateBalance()
 
         Storage.set(Transaction.all)

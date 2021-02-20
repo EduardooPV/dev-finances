@@ -4,7 +4,29 @@
     --green: #49AA26;
     --light-green: #3dd705;
     --red: #E92929;
+    /* Dark Mode*/
+    --font-color-base: #363f5f;
+    --expense-color: #e92929;
+    --light-color-base: #fff;
+    --table-color-base: #fff;
+    --background-color-header: #2d4a22;
+    --background-color: #f0f2f5;
 }
+
+/* Media Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --font-color-base: #f0f2f5;
+        --green: #49aa26;
+        --light-green: #555;
+        --expense-color: #e92929;
+        --light-color-base: #1f1b24;
+        --table-color-base: #121212;
+        --background-color-header: #121212;
+        --background-color: #1f1b24;
+    }
+}
+
 *,
 *:before,
 *:after {
@@ -40,6 +62,10 @@ body {
     position: relative;
 
     margin: auto;
+}
+
+.svg {
+    stroke: var(--light-color-base)
 }
 
 /*------------ MENU HAMBURGUER ------------*/
@@ -110,8 +136,6 @@ body {
     left: 0;
 
     display: flex;
-    align-items: center;
-    justify-content: center;
 
     opacity: 0;            /* Retirando o Modal da tela */
     visibility: hidden;
@@ -127,12 +151,12 @@ body {
 
 .modalmenuopen {
     background: #ffffff;
-    padding: 2.4rem;
+    padding: 1.5rem;
     position: relative;
     width: 90%;
-    max-width: 500px;
+    max-width: 300px;
 
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 .modalmenuopen > ul > li {
@@ -143,46 +167,10 @@ body {
 .modalmenuopen img {
     background-color: darkgreen;
     width: 100%;
+    cursor: pointer;
 
     padding: 2rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*------------ TITLES ------------*/
 h2 {
