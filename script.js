@@ -155,24 +155,6 @@ const DOM = {
             : ['light', 'dark']
     },
 
-    loadTheme(darkMode) {
-        const cssRules = window.document.styleSheets[0].cssRules
-
-        for (const rule of cssRules) {
-            let media = rule.media
-
-            if (media) {
-                const [currentTheme] = DOM.invertTheme(media.mediaText)
-                const nextTheme = darkMode ? 'light' : 'dark'
-
-                media.mediaText = media.mediaText.replace(
-                    '(prefers-color-scheme: ' + currentTheme + ')',
-                    '(prefers-color-scheme: ' + nextTheme + ')'
-                )
-            }
-        }
-    },
-
     switchTheme() {
         const cssRules = window.document.styleSheets[0].cssRules
         let darkMode = []
