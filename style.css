@@ -5,7 +5,9 @@
     --light-green: #3dd705;
     --red: #E92929;
 }
-* {
+*,
+*:before,
+*:after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -33,14 +35,158 @@ body {
 }
 
 .container {
-    width: min(90vw, 700px);  /* Função que mantem a menor proporção (Responsividade)*/
+    width: min(90vw, 800px);  /* Função que mantem a menor proporção (Responsividade)*/
+
+    position: relative;
 
     margin: auto;
 }
 
+/*------------ MENU HAMBURGUER ------------*/
+
+.menu {
+    background: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: -8.9rem;
+    cursor: pointer;
+    box-shadow: 0 0 0 0  #fff, 0 0 0 0  #fff;
+}
+
+.menu:hover {
+    box-shadow: 0 0 0 8px  #fff, 0 0 0 8px  #fff;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
+.hamburguer {
+    position: relative;
+    display: block;
+    background: #000;
+    width: 30px;
+    height: 2px;
+    top: 30px;
+    left: 15px;
+    transition: .5s ease-in-out;
+}
+
+.hamburguer:before,
+.hamburguer:after {
+    background: #000;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: .5s ease-in-out;
+}
+
+.hamburguer:before {
+    top: -10px;
+}
+
+.hamburguer::after {
+    bottom: -10px;
+}
+
+#menu-hamburguer {
+    display: none;
+}
+
+
+/*  MODAL  */
+
+
+
+.modal-overlay2 {
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.7);  /* Transparencia */
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;            /* Retirando o Modal da tela */
+    visibility: hidden;
+
+    z-index: 999;
+}
+
+.modal-overlay2.active2 {
+    opacity: 1;
+    visibility: visible; /* Voltando a aparecer na tela */
+    
+}
+
+.modalmenuopen {
+    background: #ffffff;
+    padding: 2.4rem;
+    position: relative;
+    width: 90%;
+    max-width: 500px;
+
+    font-size: 3rem;
+}
+
+.modalmenuopen > ul > li {
+    padding-top: 2rem;   
+    list-style: none;
+}
+
+.modalmenuopen img {
+    background-color: darkgreen;
+    width: 100%;
+
+    padding: 2rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*------------ TITLES ------------*/
 h2 {
-    margin-top: 3.2rem;
+    margin-top: rem;
     margin-bottom: 0.8rem;
     color: var(--dark-blue);
     font-weight: normal;
@@ -78,14 +224,28 @@ button:hover {
 
 
 .button.new {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: .8rem;
+
+    height: 40px;
+    width: 160px;
+
+    border: 2px var(--green) solid;
+    border-radius: 0.25;
+
+    opacity: 0.7;
+}
+
+.button.new:hover {
+    opacity: 1;
 }
 
 .button.cancel {
     color: var(--red);
     border: 2px var(--red) solid;
-    border-radius: 00.25rem;
+    border-radius: 0.25rem;
 
     height: 50px;
     
@@ -239,6 +399,7 @@ td.expense {
     opacity: 1;
     visibility: visible; /* Voltando a aparecer na tela */
 }
+
 
 .modal {
     background: #F0F2F5;

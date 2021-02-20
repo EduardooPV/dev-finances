@@ -33,6 +33,20 @@ const ModalConfirm = {
     }
 }
 
+const ModalMenu = {
+    open() {
+        document
+            .querySelector('.modal-overlay2.modalmenu')
+            .classList.add('active2')
+    },
+
+    close() {
+        document
+            .querySelector('.modal-overlay2.modalmenu')
+            .classList.remove('active2')
+    }
+}
+
 const Storage = {
     get() {
         return JSON.parse(localStorage.getItem("dev.finances:transactions")) || []
@@ -109,7 +123,7 @@ const DOM = {
         <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
         <td>
-            <a href="#" onclick="ModalConfirm.open()" class="button new"><img style="width: 1.7rem; margin-top: 0.25rem;" src="assets/minus1.svg" alt="Confirmar exclusão"></a>
+            <a href="#" onclick="ModalConfirm.open()" class="button"><img style="width: 1.7rem; margin-top: 0.25rem;" src="assets/minus1.svg" alt="Confirmar exclusão"></a>
         `
         return html
     },

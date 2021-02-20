@@ -22,17 +22,47 @@
 
     <!-- Header, onde tem a logo-->
     <header>
+
         <img src="assets/logo.svg" alt="Logo Dev Finance">
+
     </header>
 
     <!-- Cards e as transações -->
     <main class="container">
 
+        <!-- MENU HAMBURGUER !! -->
+        <input onclick="ModalMenu.open()" id="menu-hamburguer" type="checkbox">
+
+        <label for="menu-hamburguer">
+            <nav class="menu">
+                <spam class="hamburguer"></spam>
+            </nav>
+        </label>
+
+        <!-- MODAL MENU -->
+
+        <div class="modal-overlay2 modalmenu">
+            <div class="modalmenuopen">
+                <img src="assets/logo.svg" alt="">
+                <ul>
+                    <li><a onclick="ModalMenu.close()" href="#">Inicio</a></li>
+                    <li><a href="#">Carteiras</a></li>
+                    <li><a href="#">Extrato</a></li>
+                    <li><a href="#">Parcelas</a></li>
+                    <li><a href="#">Modo Escuro</a></li>
+
+                </ul>
+            </div>
+        </div>
+    
+
+        <!-- CARDS -->
         <section id="balance">
 
             <h2 class="sr-only">Balanço</h2>
 
             <!-- Cards, com os valores de Entradas, Saídas e o calculo TOTAL -->
+
             <div class="card">
                 <h3>
                     <span>Entradas</span>
@@ -63,7 +93,7 @@
         <section id="transaction">
             <h2 class="sr-only">Transações</h2>
 
-            <a href="#" onclick="Modal.open()" class="button new">+ Nova Transação</a>
+            <a href="#" onclick="Modal.open()" class="button new ">+ Nova Transação</a>
 
             <table id="data-table">
                 <thead>
