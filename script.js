@@ -17,12 +17,16 @@ const Modal = {
 }
 
 const ModalConfirm = {
-    open() {
+    selectedIndex: null,
+    open(index) {
         // Abrir modal
         // Adicionar a classe active ao modal
         document
             .querySelector('.modal-overlay.confirm')
             .classList.add('active')
+
+        //Salva o index da transação a ser deletada
+        ModalConfirm.selectedIndex = index
     },
     close() {
         // Fechar modal
@@ -45,6 +49,7 @@ const ModalMenu = {
             .querySelector('.modal-overlay2.modalmenu')
             .classList.remove('active2')
     }
+    
 }
 
 const Storage = {
@@ -57,8 +62,10 @@ const Storage = {
     },
 }
 
+
 const Transaction = {
     all: Storage.get(),
+
 
     add(transaction) {
         Transaction.all.push(transaction)
@@ -66,9 +73,9 @@ const Transaction = {
         App.reload()
     },
 
-    remove(index) {
-        Transaction.all.splice(index, 1)
-
+    remove() {
+        Transaction.all.splice(ModalConfirm.selectedIndex, 1)
+        ModalConfirm.close()
         App.reload()
     },
 
@@ -85,7 +92,7 @@ const Transaction = {
 
     // Somaras saídas
     expenses() {
-        expense = 0
+        let expense = 0
         Transaction.all.forEach(transaction => {
             if (transaction.amount < 0) {
                 expense += transaction.amount
@@ -123,7 +130,9 @@ const DOM = {
         <td class="${CSSclass}">${amount}</td>
         <td class="date">${transaction.date}</td>
         <td>
-            <a href="#" onclick="ModalConfirm.open()" class="button"><img style="width: 1.7rem; margin-top: 0.25rem;" src="assets/minus1.svg" alt="Confirmar exclusão"></a>
+            <a href="#" onclick="ModalConfirm.open(${index})" class="button">
+              <img style="width: 1.7rem; margin-top: 0.25rem;" src="assets/minus1.svg" alt="Confirmar exclusão">
+            </a>
         `
         return html
     },
